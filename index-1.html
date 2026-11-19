@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#d9a0b0">
+<title>Happy Birthday, Lipika</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --wine:#8a1230; --rose:#d9a0b0; --cream:#f7f1ec; --ink:#2a1a20; --heart:#e88aa5;
+  --serif:'EB Garamond','Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --title:'Playfair Display',Georgia,'Times New Roman',serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{
+  background:var(--rose); color:var(--ink); font-family:var(--serif);
+  display:flex; align-items:center; justify-content:center; padding:14px; overflow:hidden;
+}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+button:focus-visible,[role=button]:focus-visible{outline:2px solid var(--wine);outline-offset:3px}
+
+/* ---------- burgundy frame with bow pattern ---------- */
+.frame{
+  position:relative; width:100%; max-width:440px; height:calc(100vh - 28px); height:calc(100svh - 28px); max-height:780px;
+  background-color:var(--wine); border-radius:18px; padding:12px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='100' viewBox='0 0 120 80'%3E%3Cg fill='none' stroke='%23c96a85' stroke-opacity='.45' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M60 40C40 10 8 14 14 38C18 56 44 52 60 40Z'/%3E%3Cpath d='M60 40C80 10 112 14 106 38C102 56 76 52 60 40Z'/%3E%3Cellipse cx='60' cy='40' rx='6' ry='7'/%3E%3Cpath d='M56 46C50 62 44 70 38 76M64 46C70 62 76 70 82 76'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:150px 100px; box-shadow:0 14px 30px rgba(80,10,30,.28);
+}
+.heart-c{position:absolute;color:var(--heart);font-size:15px;line-height:1}
+.heart-c.tl{top:6px;left:6px}.heart-c.tr{top:6px;right:6px}.heart-c.bl{bottom:5px;left:6px}.heart-c.br{bottom:5px;right:6px}
+
+/* ---------- cream card ---------- */
+.card{
+  position:relative; width:100%; height:100%; border-radius:14px; background-color:var(--cream); overflow:hidden;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='100' viewBox='0 0 120 80'%3E%3Cg fill='none' stroke='%23c98a9b' stroke-opacity='.14' stroke-width='1.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M60 40C40 10 8 14 14 38C18 56 44 52 60 40Z'/%3E%3Cpath d='M60 40C80 10 112 14 106 38C102 56 76 52 60 40Z'/%3E%3Cellipse cx='60' cy='40' rx='6' ry='7'/%3E%3Cpath d='M56 46C50 62 44 70 38 76M64 46C70 62 76 70 82 76'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:150px 100px;
+}
+.page{position:absolute;inset:0;display:none;flex-direction:column;padding:26px 24px 18px}
+.page.show{display:flex;animation:fade .6s ease both}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+
+.cherries{position:absolute;width:64px;height:72px;pointer-events:none}
+.cherries.tr{top:16px;right:14px}
+.cherries.bl{bottom:42px;left:14px}
+
+/* ---------- page 1: envelope ---------- */
+#p0{align-items:center;text-align:center}
+#p0 h1{font-family:var(--title);font-weight:600;font-size:clamp(1.55rem,7.4vw,2.05rem);line-height:1.2;margin-top:34px;letter-spacing:.005em}
+.envStage{flex:1;display:flex;align-items:center;justify-content:center;width:100%}
+.env{position:relative;width:min(300px,78vw);aspect-ratio:3/2;perspective:900px;cursor:pointer}
+.env .body{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 10px 14px rgba(90,60,40,.25))}
+.env .flap{position:absolute;left:0;top:0;width:100%;height:62%;transform-origin:top center;transition:transform .9s ease;z-index:3}
+.env.open .flap{transform:rotateX(180deg);z-index:1}
+.env .label{position:absolute;left:0;right:0;top:15%;text-align:center;font-size:1.25rem;z-index:4;color:#2a1a10;transition:opacity .3s}
+.env .seal{position:absolute;left:50%;top:48%;width:23%;translate:-50% -50%;z-index:5;filter:drop-shadow(0 3px 3px rgba(90,30,50,.35));transition:opacity .35s}
+.env.open .seal,.env.open .label{opacity:0}
+.small-caps{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:6px}
+
+/* ---------- text pages ---------- */
+.scroll{flex:1;overflow-y:auto;padding:30px 4px 6px 2px;-webkit-overflow-scrolling:touch}
+.scroll::before{content:"";float:right;width:66px;height:46px;margin-left:8px}
+.scroll h2{font-style:italic;font-weight:500;font-size:1.55rem;line-height:1.25;margin-bottom:14px;max-width:80%}
+.scroll p{font-size:clamp(1.12rem,4.9vw,1.3rem);line-height:1.58;margin-bottom:14px;overflow-wrap:anywhere}
+.scroll .sign{font-style:italic;text-align:right;margin-top:18px;font-size:1.3rem}
+.nav{display:flex;justify-content:space-between;align-items:center;padding-top:10px;font-size:1rem;color:#4a3a40;flex:none}
+.nav button{padding:8px 4px;min-width:56px;letter-spacing:.02em}
+.nav button:disabled{visibility:hidden}
+.nav .count{font-size:.85rem;opacity:.6;letter-spacing:.12em}
+.nav .back{text-align:left}.nav .next{text-align:right}
+
+#music{position:absolute;left:12px;top:12px;width:32px;height:32px;border-radius:50%;
+  background:var(--cream);border:1.5px solid var(--wine);color:var(--wine);font-size:.95rem;line-height:1;display:none;z-index:20}
+#music.show{display:block}
+
+@media (max-height:620px){ .scroll{padding-top:16px} #p0 h1{margin-top:12px} }
+@media (prefers-reduced-motion:reduce){ .page.show{animation:none} .env .flap{transition:none} }
+</style>
+</head>
+<body>
+
+<main class="frame">
+  <span class="heart-c tl">♥</span><span class="heart-c tr">♥</span><span class="heart-c bl">♥</span><span class="heart-c br">♥</span>
+  <div class="card" id="card">
+
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <defs>
+        <symbol id="cherry" viewBox="0 0 90 100">
+          <path d="M44 22C38 44 28 62 24 74M44 22C52 42 60 60 66 72" fill="none" stroke="#5b2a1c" stroke-width="2" stroke-linecap="round"/>
+          <path d="M44 22C30 6 14 10 20 22C24 30 38 28 44 22Z M44 22C58 6 74 10 68 22C64 30 50 28 44 22Z" fill="none" stroke="#8a1230" stroke-width="2" stroke-linejoin="round"/>
+          <circle cx="24" cy="82" r="15" fill="#a10f2c"/><circle cx="66" cy="80" r="15" fill="#b8122f"/>
+          <ellipse cx="19" cy="76" rx="4.5" ry="3" fill="#fff" opacity=".55"/><ellipse cx="61" cy="74" rx="4.5" ry="3" fill="#fff" opacity=".55"/>
+        </symbol>
+      </defs>
+    </svg>
+
+    <!-- PAGE 0: envelope -->
+    <section class="page show" id="p0" aria-label="Envelope">
+      <h1>Happy Birthday,<br>Lipika</h1>
+      <div class="envStage">
+        <div class="env" id="env" role="button" tabindex="0" aria-label="Tap to open">
+          <svg class="body" viewBox="0 0 300 200" aria-hidden="true">
+            <rect width="300" height="200" rx="5" fill="#d8cdb2"/>
+            <path d="M0 0L150 108L0 200Z M300 0L150 108L300 200Z" fill="#d3c8ab"/>
+            <path d="M0 200L150 98L300 200Z" fill="#e2d9c2"/>
+            <path d="M0 200L150 98L300 200" fill="none" stroke="#c4b896" stroke-width="1.2"/>
+          </svg>
+          <svg class="flap" viewBox="0 0 300 124" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 0H300V10C286 10 280 22 266 24C250 26 244 40 228 42C206 45 196 70 176 88C168 95 160 112 150 124C140 112 132 95 124 88C104 70 94 45 72 42C56 40 50 26 34 24C20 22 14 10 0 10Z" fill="#e6ddc7" stroke="#cfc3a4" stroke-width="1.2"/>
+            <g fill="none" stroke="#c9bd9e" stroke-width="1.4" stroke-linecap="round">
+              <path d="M150 20C130 20 118 34 124 48C128 58 140 58 142 48"/>
+              <path d="M150 20C170 20 182 34 176 48C172 58 160 58 158 48"/>
+              <path d="M96 40C80 36 66 44 68 56M204 40C220 36 234 44 232 56"/>
+            </g>
+          </svg>
+          <div class="label">Tap to open</div>
+          <svg class="seal" viewBox="0 0 100 92" aria-hidden="true">
+            <path d="M50 88C20 62 2 44 2 26C2 12 13 2 27 2C37 2 45 7 50 15C55 7 63 2 73 2C87 2 98 12 98 26C98 44 80 62 50 88Z" fill="#e79ab4" stroke="#d27593" stroke-width="3"/>
+            <path d="M50 76C26 56 12 42 12 27C12 17 20 10 29 10C38 10 45 15 50 22C55 15 62 10 71 10C80 10 88 17 88 27C88 42 74 56 50 76Z" fill="#f0b4c7"/>
+            <path d="M52 26A17 17 0 1 0 66 52A13 13 0 1 1 52 26Z" fill="#d8b46a" transform="translate(-4 2)"/>
+          </svg>
+        </div>
+      </div>
+      <p class="small-caps">for Lipika</p>
+      <svg class="cherries bl" aria-hidden="true"><use href="#cherry"/></svg>
+    </section>
+
+    <div id="pages"></div>
+    <button id="music" aria-label="Music on or off">♪</button>
+  </div>
+</main>
+
+<audio id="song" loop preload="auto"></audio>
+
+<script>
+/* ================== EDIT THESE ================== */
+const SONG_SRC   = "song.mp3";  // put your O Sanam file here (same folder as this file)
+const SONG_START = 0;           // second to start from (e.g. 45 to start at the trending part)
+
+const PAGES = [
+  { heading: "Happy birthdayy Lipikaaaaaa",
+    paras: [
+      "Idk where to start but yeah we hve literally been talking for 4...5 months and we hve had so many misunderstandings,fights and all sorts of things in between",
+      "But yeah im genuinely glad that I got to know youu.. like you gng nd yeah I was ready to waitt but then you told me that you wanted to sort things out with Sonishh and I felt like the best thingg I could do was give you some spacee"
+    ] },
+  { paras: [
+      "Im really sorry for acting rude and being dry that dayy I never intended to make you feel bad r anythingg",
+      "I jus didnt know how to reactt to everything and honestly I was trying tooo figure things out myself tooo"
+    ] },
+  { paras: [
+      "And yeah bro maybe Im jus a phase in your life ..idk but I genuinely hope that the little time we spent talking meantt something to yu too",
+      "Lipika yu trusted me with so many things and I hope yk that every single thing youve shared with me will always be safe w Me."
+    ] },
+  { paras: [
+      "I really feel bad saying all this on your birthday but I jus wanted to say sorry and thank youyyyyy",
+      "Thank you for trusting meee, for all those random conversationss, the yapping and everything in betweenn"
+    ] },
+  { paras: [
+      "I genuinely wish nothing lipika but happiness for youu",
+      "I hope you heal from everything youve been through and get everything youve ever wished for........",
+      "Happyyyyy birthdayyyyyy once again Lipikaaaaaaa  enjoy your day and spend it with your loved ones.......Take care of yourself and stay happyyyy",
+      "Yayyyyyyy"
+    ],
+    sign: "~sharvesh" }
+];
+/* ================================================= */
+
+const $ = id => document.getElementById(id);
+const song = $('song'), music = $('music'), pagesEl = $('pages');
+song.src = SONG_SRC;
+
+const total = PAGES.length;
+PAGES.forEach((pg, i) => {
+  const s = document.createElement('section');
+  s.className = 'page'; s.id = 'p' + (i + 1); s.setAttribute('aria-label', 'Page ' + (i + 1));
+  const sc = document.createElement('div'); sc.className = 'scroll';
+  if(pg.heading){ const h = document.createElement('h2'); h.textContent = pg.heading; sc.appendChild(h); }
+  pg.paras.forEach(t => { const p = document.createElement('p'); p.textContent = t; sc.appendChild(p); });
+  if(pg.sign){ const p = document.createElement('p'); p.className = 'sign'; p.textContent = pg.sign; sc.appendChild(p); }
+  s.appendChild(sc);
+  const nav = document.createElement('div'); nav.className = 'nav';
+  const back = document.createElement('button'); back.className = 'back'; back.textContent = 'Back'; back.disabled = (i === 0);
+  const count = document.createElement('span'); count.className = 'count'; count.textContent = (i + 1) + ' / ' + total;
+  const next = document.createElement('button'); next.className = 'next'; next.textContent = 'Next'; next.disabled = (i === total - 1);
+  back.addEventListener('click', () => go(i));
+  next.addEventListener('click', () => go(i + 2));
+  nav.append(back, count, next); s.appendChild(nav);
+  const ch = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  ch.setAttribute('class', 'cherries tr'); ch.setAttribute('aria-hidden', 'true');
+  ch.innerHTML = '<use href="#cherry"/>';
+  s.appendChild(ch);
+  pagesEl.appendChild(s);
+});
+
+let cur = 0;
+function go(n){
+  if(n < 1) n = 1;
+  if(n > total) n = total;
+  const el = $('p' + n); if(!el) return;
+  document.querySelectorAll('.page.show').forEach(p => p.classList.remove('show'));
+  el.classList.add('show'); cur = n;
+  const sc = el.querySelector('.scroll'); if(sc) sc.scrollTop = 0;
+}
+
+function startSong(){
+  const seek = () => { if(SONG_START > 0){ try{ song.currentTime = SONG_START; }catch(e){} } };
+  if(song.readyState >= 1) seek(); else song.addEventListener('loadedmetadata', seek, {once:true});
+  const p = song.play();
+  if(p && p.then) p.then(() => { music.classList.add('show'); music.textContent = '♪'; }).catch(() => {});
+}
+song.addEventListener('error', () => music.classList.remove('show'));
+music.addEventListener('click', () => {
+  if(song.paused){ song.play().catch(() => {}); music.textContent = '♪'; }
+  else { song.pause(); music.textContent = '✕'; }
+});
+
+let opened = false;
+function openEnv(){
+  if(opened) return; opened = true;
+  startSong();
+  $('env').classList.add('open');
+  setTimeout(() => go(1), 1100);
+}
+$('env').addEventListener('click', openEnv);
+$('env').addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openEnv(); } });
+
+document.addEventListener('keydown', e => {
+  if(cur === 0) return;
+  if(e.key === 'ArrowRight') go(cur + 1);
+  if(e.key === 'ArrowLeft') go(cur - 1);
+});
+let sx = null, sy = null;
+document.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, {passive:true});
+document.addEventListener('touchend', e => {
+  if(sx === null || cur === 0) return;
+  const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; sx = sy = null;
+  if(Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.6){ if(dx < 0) go(cur + 1); else go(cur - 1); }
+}, {passive:true});
+</script>
+</body>
+</html>
